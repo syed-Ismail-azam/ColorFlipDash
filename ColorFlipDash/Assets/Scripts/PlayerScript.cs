@@ -7,7 +7,7 @@ public class ColorFlipAndMove2D : MonoBehaviour
     private Color whiteColor = Color.white;
 
     [Header("Movement Settings")]
-    private float moveSpeed = 10f;
+    public float moveSpeed = 20f;
 
     [Header("Boundary Limits")]
     public float leftLimit = 0.9f;
