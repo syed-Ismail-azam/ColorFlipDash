@@ -2,16 +2,25 @@ using UnityEngine;
 
 public class ObstacleMover : MonoBehaviour
 {
-    public float moveSpeed = 2f;
+    private bool isHandled = false;
 
     void Update()
     {
-        transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
+        if (isHandled) return;
 
-        // Destroy if it moves too far off screen
+        float speed = GameManager.Instance.GetCurrentObstacleSpeed();
+        transform.Translate(Vector3.down * speed * Time.deltaTime, Space.World);
+
         if (transform.position.y < -6f)
         {
+            isHandled = true;
+            GameManager.Instance.GameOver();
             Destroy(gameObject);
         }
+    }
+
+    public void MarkAsHandled()
+    {
+        isHandled = true;
     }
 }
