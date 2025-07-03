@@ -3,8 +3,10 @@ using UnityEngine;
 public class ColorFlipAndMove2D : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
-    private Color blackColor = Color.black;
-    private Color whiteColor = Color.white;
+   // private Color blackColor = Color.black;
+    private Color greenColor = new Color(33f / 255f, 255f / 255f, 255f / 255f);
+    private Color purpleColor = new Color(255f / 255f, 120f / 255f, 255f / 255f);
+    //private Color whiteColor = Color.white;
 
     [Header("Movement Settings")]
     public float moveSpeed = 50f;
@@ -21,7 +23,7 @@ public class ColorFlipAndMove2D : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = blackColor;
+        spriteRenderer.color = greenColor;
     }
 
     void Update()
@@ -76,9 +78,9 @@ public class ColorFlipAndMove2D : MonoBehaviour
 
     void FlipColor()
     {
-        if (spriteRenderer.color == blackColor)
-            spriteRenderer.color = whiteColor;
+        if (spriteRenderer.color == greenColor)
+            spriteRenderer.color = purpleColor;
         else
-            spriteRenderer.color = blackColor;
+            spriteRenderer.color = greenColor;
     }
 }

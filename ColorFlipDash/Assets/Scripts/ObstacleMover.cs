@@ -11,10 +11,16 @@ public class ObstacleMover : MonoBehaviour
         float speed = GameManager.Instance.GetCurrentObstacleSpeed();
         transform.Translate(Vector3.down * speed * Time.deltaTime, Space.World);
 
+        // Reached bottom of screen
         if (transform.position.y < -6f)
         {
-            isHandled = true;
-            GameManager.Instance.GameOver();
+            ObstacleColor colorType = GetComponent<ObstacleColor>();
+
+            if (colorType != null && colorType.type != ObstacleColor.ObstacleType.Fraud)
+            {
+                GameManager.Instance.GameOver(); // Only trigger game over if it's NOT fraud
+            }
+
             Destroy(gameObject);
         }
     }
