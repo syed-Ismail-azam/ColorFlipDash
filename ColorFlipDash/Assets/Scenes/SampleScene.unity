@@ -1253,6 +1253,79 @@ Transform:
   - {fileID: 298987426}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1593830698
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 377780552397921021, guid: bdaa476b787fa534a8759569dda79c60, type: 3}
+      propertyPath: lengthInSec
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 377780552397921021, guid: bdaa476b787fa534a8759569dda79c60, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 377780552397921021, guid: bdaa476b787fa534a8759569dda79c60, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 3.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 672886538165295649, guid: bdaa476b787fa534a8759569dda79c60, type: 3}
+      propertyPath: m_Name
+      value: HitParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 672886538165295649, guid: bdaa476b787fa534a8759569dda79c60, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174318992816118710, guid: bdaa476b787fa534a8759569dda79c60, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.6286998
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174318992816118710, guid: bdaa476b787fa534a8759569dda79c60, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.49871868
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174318992816118710, guid: bdaa476b787fa534a8759569dda79c60, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.71624494
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174318992816118710, guid: bdaa476b787fa534a8759569dda79c60, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174318992816118710, guid: bdaa476b787fa534a8759569dda79c60, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174318992816118710, guid: bdaa476b787fa534a8759569dda79c60, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174318992816118710, guid: bdaa476b787fa534a8759569dda79c60, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174318992816118710, guid: bdaa476b787fa534a8759569dda79c60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174318992816118710, guid: bdaa476b787fa534a8759569dda79c60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174318992816118710, guid: bdaa476b787fa534a8759569dda79c60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bdaa476b787fa534a8759569dda79c60, type: 3}
 --- !u!1 &1728170351
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,6 +1370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c251e7461983f48a05e1c8ac15685e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitEffectPrefab: {fileID: 672886538165295649, guid: bdaa476b787fa534a8759569dda79c60, type: 3}
   baseSpeed: 2
   speedIncreaseRate: 0.2
   maxSpeed: 15
@@ -1398,8 +1472,9 @@ MonoBehaviour:
   obstaclePrefabs:
   - {fileID: 3088254197763778929, guid: 3336367099baeac4aaf7dfe297f133cf, type: 3}
   - {fileID: 1799418119012096537, guid: 6ccbe12e4bf10a0428a1f572725adfbd, type: 3}
-  - {fileID: 9003956508846433497, guid: 6633ca0c5fe56c043b4d53e39fdd186c, type: 3}
   - {fileID: 5213018525921933195, guid: 207dbde6b7b7497479caac93a3166851, type: 3}
+  - {fileID: 9003956508846433497, guid: 6633ca0c5fe56c043b4d53e39fdd186c, type: 3}
+  - {fileID: 8563969181675335601, guid: fd3e70a01c09ca845910f1caffc9efbf, type: 3}
   spawnInterval: 2.5
   spawnY: 6.5
   leftLimit: -1.62
@@ -1493,3 +1568,4 @@ SceneRoots:
   - {fileID: 1261624063}
   - {fileID: 1215226850}
   - {fileID: 1997232597}
+  - {fileID: 1593830698}

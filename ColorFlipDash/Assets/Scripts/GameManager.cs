@@ -5,6 +5,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [Header("Effects")]
+    public GameObject hitEffectPrefab;
+
     [Header("Obstacle Speed Settings")]
     public float baseSpeed = 2f;
     public float speedIncreaseRate = 0.2f;

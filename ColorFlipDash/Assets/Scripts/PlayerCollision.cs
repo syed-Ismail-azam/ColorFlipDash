@@ -15,13 +15,7 @@ public class PlayerCollision : MonoBehaviour
         if (obstacle != null)
         {
 
-            /* // Fraud obstacle ? Instant game over
-             if (obstacle.type == ObstacleColor.ObstacleType.Fraud)
-             {
-                 GameManager.Instance.GameOver();
-                 return;
-             }*/
-            // Fraud block logic
+          
             if (obstacle.type == ObstacleColor.ObstacleType.Fraud)
             {
                 GameManager.Instance.GameOver();  // Touching fraud ? Game over
@@ -33,6 +27,13 @@ public class PlayerCollision : MonoBehaviour
 
             if (playerIsGreen == obstacleIsGreen)
             {
+
+                //  Spawn effect
+                if (GameManager.Instance.hitEffectPrefab != null)
+                {
+                    Instantiate(GameManager.Instance.hitEffectPrefab, other.transform.position, Quaternion.identity);
+                }
+
                 // Correct match
                 ObstacleMover mover = other.GetComponent<ObstacleMover>();
                 if (mover != null)
