@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro; // For TMP text support
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,11 +17,24 @@ public class GameManager : MonoBehaviour
 
     [Header("UI")]
     public Text scoreText;
-    public Text highScoreText; //  Add this
+    public Text highScoreText;
+    public Text startText; // <-- TMP "READY... GO!" text
+
+    [Header("Game Over UI")]
+    public GameObject gameOverPanel;
+    public Text gameOverScoreText;
+
+
+    [Header("Audio")]
+    public AudioClip readySound;
+    public AudioClip goSound;
+
+    private AudioSource audioSource;
 
     private float timer;
     private int score = 0;
     private int highScore = 0;
+    private bool gameStarted = false;
 
     void Awake()
     {
@@ -28,22 +43,27 @@ public class GameManager : MonoBehaviour
         else
             Destroy(gameObject);
 
-        // Load saved high score
         highScore = PlayerPrefs.GetInt("HighScore", 0);
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Start()
     {
         UpdateScoreUI();
+        StartCoroutine(ReadyGoSequence());
     }
 
     void Update()
     {
-        timer += Time.deltaTime;
+        if (gameStarted)
+        {
+            timer += Time.deltaTime;
+        }
     }
 
     public float GetCurrentObstacleSpeed()
     {
+        if (!gameStarted) return 0f; // Don't spawn until game starts
         float currentSpeed = baseSpeed + (timer * speedIncreaseRate);
         return Mathf.Min(currentSpeed, maxSpeed);
     }
@@ -52,7 +72,6 @@ public class GameManager : MonoBehaviour
     {
         score += amount;
 
-        // Update high score if needed
         if (score > highScore)
         {
             highScore = score;
@@ -75,5 +94,58 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Game Over");
         Time.timeScale = 0f;
+        ShowGameOverUI();
+    
+
+    }
+    private void ShowGameOverUI()
+    {
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(true);
+            if (gameOverScoreText != null)
+            {
+                gameOverScoreText.text = "Score: " + score + "\nHigh Score: " + highScore;
+            }
+        }
+    }
+
+    public void PlayGame()
+    {
+        Time.timeScale = 1f;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameePlay");
+    }
+    public void MainMenueGame()
+    {
+        Time.timeScale = 1f;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    }
+
+    private IEnumerator ReadyGoSequence()
+    {
+        Time.timeScale = 0f;
+
+        if (startText != null)
+        {
+            startText.gameObject.SetActive(true);
+            startText.text = "READY...";
+        }
+
+        if (readySound != null) audioSource.PlayOneShot(readySound);
+        yield return new WaitForSecondsRealtime(1.5f);
+
+        if (startText != null)
+        {
+            startText.text = "GO!";
+        }
+
+        if (goSound != null) audioSource.PlayOneShot(goSound);
+        yield return new WaitForSecondsRealtime(2f);
+
+        if (startText != null)
+            startText.gameObject.SetActive(false);
+
+        Time.timeScale = 1f;
+        gameStarted = true;
     }
 }
