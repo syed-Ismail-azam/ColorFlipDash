@@ -6,6 +6,7 @@ using System.Collections;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public ColorFlipAndMove2D playerScript;
 
     [Header("Effects")]
     public GameObject hitEffectPrefab;
@@ -23,6 +24,11 @@ public class GameManager : MonoBehaviour
     [Header("Game Over UI")]
     public GameObject gameOverPanel;
     public Text gameOverScoreText;
+
+    [Header("Pause UI")]
+    public GameObject pausePanel;
+    public GameObject pauseButton; // Optional: hide button when paused
+
 
 
     [Header("Audio")]
@@ -90,12 +96,21 @@ public class GameManager : MonoBehaviour
             highScoreText.text = "High Score: " + highScore.ToString();
     }
 
-    public void GameOver()
+    /*public void GameOver()
     {
         Debug.Log("Game Over");
         Time.timeScale = 0f;
         ShowGameOverUI();
     
+
+    }*/
+
+    public void GameOver()
+    {
+        Time.timeScale = 0f;
+        ShowGameOverUI();
+        pauseButton.SetActive(false);
+        playerScript.SetInputEnabled(false);
 
     }
     private void ShowGameOverUI()
@@ -118,8 +133,43 @@ public class GameManager : MonoBehaviour
     public void MainMenueGame()
     {
         Time.timeScale = 1f;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenue");
+    }
+
+    /*   public void PauseGame()
+       {
+           Time.timeScale = 0f;
+           if (pausePanel != null) pausePanel.SetActive(true);
+           if (pauseButton != null) pauseButton.SetActive(false);
+       }*/
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+        pausePanel.SetActive(true);
+        pauseButton.SetActive(false);
+        playerScript.SetInputEnabled(false);
+    }
+
+    /* public void ResumeGame()
+     {
+         Time.timeScale = 1f;
+         if (pausePanel != null) pausePanel.SetActive(false);
+         if (pauseButton != null) pauseButton.SetActive(true);
+     }*/
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        pausePanel.SetActive(false);
+        pauseButton.SetActive(true);
+        playerScript.SetInputEnabled(true);
+    }
+
+    public void GoToMainMenu()
+    {
+        Time.timeScale = 1f;
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
+
 
     private IEnumerator ReadyGoSequence()
     {
