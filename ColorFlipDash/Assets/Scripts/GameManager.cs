@@ -152,6 +152,7 @@ public class GameManager : MonoBehaviour
        }*/
     public void PauseGame()
     {
+        SoundManager.Instance.PlaySound(SoundManager.Instance.buttonClickSound);
         Time.timeScale = 0f;
         pausePanel.SetActive(true);
         pauseButton.SetActive(false);

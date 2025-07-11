@@ -19,6 +19,7 @@ public class PlayerCollision : MonoBehaviour
             if (obstacle.type == ObstacleColor.ObstacleType.Fraud)
             {
                 GameManager.Instance.GameOver();  // Touching fraud ? Game over
+                SoundManager.Instance.PlaySound(SoundManager.Instance.failSound);
                 return;
             }
 
@@ -38,13 +39,14 @@ public class PlayerCollision : MonoBehaviour
                 ObstacleMover mover = other.GetComponent<ObstacleMover>();
                 if (mover != null)
                     mover.MarkAsHandled();
-
+                SoundManager.Instance.PlaySound(SoundManager.Instance.scoreSound);
                 GameManager.Instance.AddScore(1); // ? Add score here
                 Destroy(other.gameObject);
             }
             else
             {
                 // Wrong match
+                SoundManager.Instance.PlaySound(SoundManager.Instance.failSound);
                 GameManager.Instance.GameOver();
             }
         }

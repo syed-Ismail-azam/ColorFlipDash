@@ -132,6 +132,7 @@ public class ColorFlipAndMove2D : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             FlipColor();
+            SoundManager.Instance.PlaySound(SoundManager.Instance.flipSound);
         }
 
         // Start drag (mouse or touch)
@@ -139,6 +140,7 @@ public class ColorFlipAndMove2D : MonoBehaviour
         {
             isDragging = true;
             touchStartPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            SoundManager.Instance.PlaySound(SoundManager.Instance.flipSound);
         }
         else if (Input.GetMouseButtonUp(0))
         {

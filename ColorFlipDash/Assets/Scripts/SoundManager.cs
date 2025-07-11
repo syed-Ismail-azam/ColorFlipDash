@@ -13,7 +13,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip flipSound;
     public AudioClip scoreSound;
     public AudioClip failSound;
-    //public AudioClip buttonClickSound;
+    public AudioClip buttonClickSound;
 
     [Header("Music Tracks")]
     public AudioClip[] backgroundMusicClips;
@@ -50,7 +50,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlayClick()
     {
-       // PlaySound(buttonClickSound);
+        PlaySound(buttonClickSound);
     }
 
     // ?? RANDOM MUSIC LOOP
