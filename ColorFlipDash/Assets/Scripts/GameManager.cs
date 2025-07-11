@@ -56,6 +56,12 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         UpdateScoreUI();
+        
+            Time.timeScale = 1f;
+            SoundManager.Instance.StartRandomMusicLoop();
+            //playerScript.SetInputEnabled(false);
+        
+
         StartCoroutine(ReadyGoSequence());
     }
 
@@ -111,6 +117,8 @@ public class GameManager : MonoBehaviour
         ShowGameOverUI();
         pauseButton.SetActive(false);
         playerScript.SetInputEnabled(false);
+        playerScript.SetInputEnabled(false);
+        SoundManager.Instance.StopMusicLoop();
 
     }
     private void ShowGameOverUI()
