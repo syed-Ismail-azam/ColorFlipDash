@@ -21,7 +21,7 @@ public class ObstacleSpawner : MonoBehaviour
     void SpawnObstacle()
     {
         float randomX = Random.Range(leftLimit, rightLimit);
-        Vector3 spawnPos = new Vector3(randomX, spawnY, 0f);
+        Vector3 spawnPos = new Vector3(randomX, spawnY, -1f);
 
         int randomIndex = Random.Range(0, obstaclePrefabs.Length);
         Instantiate(obstaclePrefabs[randomIndex], spawnPos, Quaternion.identity);

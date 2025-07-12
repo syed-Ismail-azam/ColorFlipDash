@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Obstacle Speed Settings")]
     public float baseSpeed = 2f;
-    public float speedIncreaseRate = 0.2f;
+    public float speedIncreaseRate = 0.1f;
     public float maxSpeed = 8f;
 
     [Header("UI")]
@@ -119,6 +119,8 @@ public class GameManager : MonoBehaviour
         playerScript.SetInputEnabled(false);
         playerScript.SetInputEnabled(false);
         SoundManager.Instance.StopMusicLoop();
+
+
 
     }
     private void ShowGameOverUI()
