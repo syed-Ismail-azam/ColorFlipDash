@@ -9,7 +9,7 @@ public class ColorFlipAndMove2D : MonoBehaviour
     private Color purpleColor = new Color(255f / 255f, 120f / 255f, 255f / 255f);
 
     [Header("Movement Settings")]
-    public float moveSpeed = 50f;
+    private float moveSpeed = 500f;
 
     [Header("Boundary Limits")]
     public float leftLimit = 0.9f;

@@ -81,7 +81,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 1.1885095, y: 4.096944}
+  m_Size: {x: 0.79113436, y: 2.8503194}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -106,8 +106,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1885095, y: 4.096944, z: 1.466216}
-  m_Center: {x: 0, y: 0, z: -0.6331081}
+  m_Size: {x: 0.84195757, y: 2.8113494, z: 0.9619311}
+  m_Center: {x: -0.016768932, y: -0.016768932, z: -0.38096565}
 --- !u!114 &6803425188789215967
 MonoBehaviour:
   m_ObjectHideFlags: 0
